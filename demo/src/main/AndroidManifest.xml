@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.google.maps.android.utils.demo">
+    package="uk.iloveruby.huawei.hms.maps.utils.demo">
 
     <permission
-        android:name="com.google.maps.android.utils.permission.MAPS_RECEIVE"
+        android:name="com.huawei.hms.mapsutils.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.google.maps.android.utils.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.huawei.hms.mapsutils.permission.MAPS_RECEIVE" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -28,22 +28,16 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
         <!--
         To add your Maps API key to this project:
             1. Create a file demo/secure.properties
             2. Add this line, where YOUR_API_KEY is your API key:
                 MAPS_API_KEY=YOUR_API_KEY
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/maps_api_key" />
+
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.huawei.hms.maps.utils.demo.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,22 +45,23 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".PolyDecodeDemoActivity" />
-        <activity android:name=".PolySimplifyDemoActivity" />
-        <activity android:name=".IconGeneratorDemoActivity" />
-        <activity android:name=".DistanceDemoActivity" />
-        <activity android:name=".ClusteringDemoActivity" />
-        <activity android:name=".BigClusteringDemoActivity" />
-        <activity android:name=".VisibleClusteringDemoActivity" />
-        <activity android:name=".CustomMarkerClusteringDemoActivity" />
-        <activity android:name=".ClusteringViewModelDemoActivity"/>
-        <activity android:name=".TileProviderAndProjectionDemo" />
-        <activity android:name=".HeatmapsDemoActivity" />
-        <activity android:name=".HeatmapsPlacesDemoActivity" />
-        <activity android:name=".GeoJsonDemoActivity" />
-        <activity android:name=".KmlDemoActivity" />
-        <activity android:name=".MultiLayerDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.PolyDecodeDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.PolySimplifyDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.IconGeneratorDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.DistanceDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.ClusteringDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.BigClusteringDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.VisibleClusteringDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.CustomMarkerClusteringDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.ClusteringViewModelDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.TileProviderAndProjectionDemo" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.HeatmapsDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.HeatmapsPlacesDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.GeoJsonDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.KmlDemoActivity" />
+        <activity android:name="com.huawei.hms.maps.utils.demo.MultiLayerDemoActivity" />
 
     </application>
 
+    <uses-permission android:name="com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA" />
 </manifest>
