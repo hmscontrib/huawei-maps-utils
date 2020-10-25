@@ -1,0 +1,60 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+AppGalleryCredentials = Struct.new(:client_id, :client_secret, :app_id, :apk_path)
+
+platform :android do
+  desc 'Runs all the tests'
+  lane :test do
+    gradle(task: 'test')
+  end
+ 
+  desc 'Deploy a new version to Huawei AppGallery'
+  lane :ag_deploy do
+    #  gradle(task: 'clean assembleRelease')
+    huawei_appgallery_connect(
+      client_id: ENV.fetch("AG_CLIENT_ID", appgallery_credentials.client_id),
+      client_secret: ENV.fetch("AG_CLIENT_SECRET", appgallery_credentials.client_secret),
+      app_id: ENV.fetch("AG_APP_ID", appgallery_credentials.app_id),
+      apk_path: ENV.fetch("AG_APK_PATH", appgallery_credentials.apk_path),
+      is_aab: true,
+      submit_for_review: false
+    )
+  end
+
+  desc 'Get  information about current Huawei AppGallery versions'
+  lane :ag_get_info do
+     app_info = huawei_appgallery_connect_get_app_info(
+      client_id: ENV.fetch("AG_CLIENT_ID", appgallery_credentials.client_id),
+      client_secret: ENV.fetch("AG_CLIENT_SECRET", appgallery_credentials.client_secret),
+      app_id: ENV.fetch("AG_APP_ID", appgallery_credentials.app_id)
+    )
+    require 'pp'
+
+    pp app_info
+  end
+
+  def appgallery_credentials
+    @credentials ||= begin
+      file = File.read(File.expand_path('../../demo/agconnect-services.json', __FILE__))
+      client = JSON.parse(file)['client']
+       AppGalleryCredentials.new(
+        *client.values_at("client_id", "client_secret", "app_id", "apk_path")
+      )
+    end
+  end
+end
