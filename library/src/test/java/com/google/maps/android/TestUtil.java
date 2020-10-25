@@ -22,6 +22,6 @@ public class TestUtil {
      * @return true if execution is occurring on Travis CI, and false if it is not
      */
     public static boolean isRunningOnTravis() {
-        return BuildConfig.TRAVIS != null && BuildConfig.TRAVIS.equals("true");
+        return  false;
     }
 }
